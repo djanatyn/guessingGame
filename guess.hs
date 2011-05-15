@@ -1,6 +1,6 @@
 import System.Random
+
 -- configuration :)
-numberOfAttempts = 7
 theAnswer = 24
 
 -- returns whether the guess is high or low
@@ -30,4 +30,9 @@ youLose = putStrLn "\nYou lose."
 main = do
     putStrLn "djanatyn's guessing game"
     putStrLn "------------------------\n"
-    prompt numberOfAttempts
+
+    putStrLn "number of attempts?"
+    attempts <- getLine
+
+    -- begin the game with the number of attempts specified by the user
+    prompt (read attempts :: Int)
