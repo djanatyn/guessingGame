@@ -1,5 +1,3 @@
-import System.Random
-
 -- configuration :)
 theAnswer = 24
 
@@ -9,9 +7,9 @@ result n
     | n > theAnswer = "You're a bit high.\n"
     | n < theAnswer = "You're a bit low.\n"
     | otherwise     = "...you broke the game! :(\n"
--- if you have no lives left
+
+prompt :: Int -> IO ()
 prompt 0 = youLose
--- if you have lives left
 prompt lives = do
     putStrLn ("You've got " ++ (show lives) ++ " lives left.")
     putStrLn "Enter a number from 1-100 >"
@@ -23,10 +21,13 @@ prompt lives = do
         prompt (lives - 1)
 
 -- if you win
+youWin :: IO ()
 youWin = putStrLn "\nYou win!"
 -- if you lose
+youLose :: IO ()
 youLose = putStrLn "\nYou lose."
 
+main :: IO ()
 main = do
     putStrLn "djanatyn's guessing game"
     putStrLn "------------------------\n"
